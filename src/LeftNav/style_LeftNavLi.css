@@ -1,0 +1,13 @@
+li .LeftNavLi {
+	background-color: #ccdef4;
+	color: #295D8F;
+	border-left: 3px solid  #295D8F;
+	display: block;
+	padding: 10px 0 10px 10px;
+	margin: 5px;
+
+}
+
+ul {
+	padding: 0;
+}

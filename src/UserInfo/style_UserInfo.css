@@ -1,0 +1,31 @@
+.userInfo {
+	text-align: center;
+	background-color: #eef5ff;
+}
+
+
+.btn-group a {
+	background-color: #c0d1e5;
+	border-color: #c0d1e5;
+	white-space: normal;
+	margin: 2px;
+}
+
+.user_name {
+	font-weight: bold;
+	font-size: 150%;
+}
+
+.buy_tarif {
+	background-color: #c0d1e5;
+}
+
+.buy_tarif a {
+	color: #E15A2D;
+}
+
+.userInfo a {
+	text-decoration: underline;
+}
+
+
