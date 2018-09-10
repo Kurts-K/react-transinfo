@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import QuickStart from './../QuickStart'
 import './style_globasSearh.css'
-import InputLoad from './InputLoad.js'
+
+import Country from './Country.js'
+import Region from './Region.js'
+
+
+
 
 class GlobalSearch extends Component {
-
-
 
 
 	render() {
 
 		return (
 			<div>
-				<QuickStart />
+
+				<QuickStart AddCargo={this.props.AddCargoVisible}
+				
+				 />
+				}
 
 				<div class="form-group">
 				<h1>ПОИСК ГРУЗОВ И ТРАНСПОРТА</h1>
+				
 				<form>
 
 
@@ -26,27 +34,21 @@ class GlobalSearch extends Component {
 				<div className="load">
 					<div className="select_loading">
 					<label  htmlFfor="select_loading">Загрузка </label>
-					<select className="form-control-sm" id="select_loading">
-						<InputLoad value={'by'} country={'Беларусь'} />
-						<InputLoad value={'ru'} country={'Россия'} />
-						<InputLoad value={'ua'} country={'Украина'} />
-						<InputLoad value={'kz'} country={'Казахстан'} />
-						
-					</select>
-					<input type="text" name="rad_sloading" className="rad" placeholder="км" disabled="disabled" />
-					</div>
+					<Country  loadunload={'countryLoad'} selectCountry={this.props.selectCountry}/>
 
 					
+					<Region loadunload={'regionLoad'} countryLoad={this.props.countryLoad} selectCountry={this.props.selectCountry}  />
+
+					</div>
+
 					<div clssName="select_unloading">
 					<label htmlFfor="select_unloading">Разгрузка</label>
-					<select className="form-control-sm" id="select_unloading">
-						<InputLoad value={'by'} country={'Беларусь'} />
-						<InputLoad value={'ru'} country={'Россия'} />
-						<InputLoad value={'ua'} country={'Украина'} />
-						<InputLoad value={'kz'} country={'Казахстан'} />
-					</select>
-					<input type="text" name="rad_unloading" className="rad" placeholder="км" disabled="disabled" />
+					<Country  loadunload={'countryUnload'} selectCountry={this.props.selectCountry}/>
+					
+					<Region loadunload={'regionUnload'} selectCountry={this.props.selectCountry} countryUnload={this.props.countryUnload} />
+					
 					</div>
+
 				</div>
 
 			</div>
