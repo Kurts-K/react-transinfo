@@ -1,10 +1,11 @@
 import React, { Component } from 'react'; 			  
 
 
-function Form({onSubmit, onChange}) { 
+function Form({onSubmit, onChange, onRegister, buttonName}) { 
 
     return (
      <div>
+        
         <form className="formAuth" onSubmit={onSubmit} onChange={onChange}>
          <div>
           <input type="text" name="email" placeholder="Личный e-mail" />
@@ -20,7 +21,9 @@ function Form({onSubmit, onChange}) {
           <button className="btn btn-primary">Войти</button>
           <a href="#" className="forgot">Забыли пароль?</a>
       </form>
-        <button className="btn btn-danger btn-block">Регистрация</button>
+        <button onClick={onRegister} className="btn btn-danger btn-block">
+        {buttonName ? 'Регистрация' : 'На главную'}
+        </button>
 
       </div>
       );

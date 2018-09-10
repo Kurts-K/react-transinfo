@@ -9,6 +9,8 @@ class Auth extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onClickRegister = this.onClickRegister.bind(this);
+    
   }
 
 
@@ -16,26 +18,36 @@ class Auth extends Component {
     var tar = event.target.name;
     var val = event.target.value;
     this.setState({[tar]: val});
-    
-
-    
-    
-      }
+}
 
 
   handleSubmit(event) {
     event.preventDefault();
     this.props.onSubmited();
-    
-          
   }
 
-  render() {                            
+
+  onClickRegister(event) {
+  event.preventDefault();
+  this.props.onRegister();
+ 
+}
+
+
+render() {                            
     return (
 
       <div>
+
       <div className="authForm">ЛИЧНЫЙ КАБИНЕТ</div>
-      <Form onSubmit = {this.handleSubmit} onChange= {this.handleChange} />
+
+      <Form
+      onSubmit = {this.handleSubmit} 
+      onChange = {this.handleChange} 
+      onRegister = {this.onClickRegister} 
+      buttonName = {this.props.SearchVisible}
+      />
+     
       </div>
     );
   }
