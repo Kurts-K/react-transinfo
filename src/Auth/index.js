@@ -7,18 +7,14 @@ class Auth extends Component {
 
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+   
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onClickRegister = this.onClickRegister.bind(this);
     
   }
 
 
-  handleChange(event) {
-    var tar = event.target.name;
-    var val = event.target.value;
-    this.setState({[tar]: val});
-}
+
 
 
   handleSubmit(event) {
@@ -43,9 +39,9 @@ render() {
 
       <Form
       onSubmit = {this.handleSubmit} 
-      onChange = {this.handleChange} 
+      handleChangeTextInput = {this.props.handleChangeTextInput} 
       onRegister = {this.onClickRegister} 
-      buttonName = {this.props.SearchVisible}
+      buttonName = {this.props.CenterSearchVisible}
       />
      
       </div>

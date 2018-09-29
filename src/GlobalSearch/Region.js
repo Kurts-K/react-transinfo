@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import InputLoad from './InputLoad.js'
 
 
-class Region extends Component { countryUnload
+class Region extends Component {
 		render() {
 			return(<div>
 					
 
 			<div>
-			{(this.props.countryLoad || this.props.countryUnload) == 'by' &&
+			{(this.props.countryLoad || this.props.countryUnload ||
+				this.props.AddCargoСountryLoad  || this.props.AddCargoCountryUnload) == 'by' &&
 				<select 
 				className="form-control-sm" 
 				id={this.props.loadunload}
@@ -24,7 +25,8 @@ class Region extends Component { countryUnload
 			</div>
 
 			<div>
-			{(this.props.countryLoad || this.props.countryUnload) == 'ru' &&
+			{(this.props.countryLoad || this.props.countryUnload ||
+				this.props.AddCargoСountryLoad || this.props.AddCargoCountryUnload) == 'ru' &&
 				<select 
 				className="form-control-sm"
 				id={this.props.loadunload} 
@@ -92,7 +94,8 @@ class Region extends Component { countryUnload
 
 
 			<div>
-			{(this.props.countryLoad || this.props.countryUnload) == 'ua' &&
+			{(this.props.countryLoad || this.props.countryUnload ||
+				this.props.AddCargoСountryLoad || this.props.AddCargoCountryUnload) == 'ua' &&
 				<select 
 				className="form-control-sm" 
 				id={this.props.loadunload} 
@@ -126,7 +129,8 @@ class Region extends Component { countryUnload
 			</div>
 
 			<div>
-			{(this.props.countryLoad || this.props.countryUnload) == 'kz' &&
+			{(this.props.countryLoad || this.props.countryUnload ||
+				this.props.AddCargoСountryLoad || this.props.AddCargoCountryUnload) == 'kz' &&
 				<select 
 				className="form-control-sm" 
 				id={this.props.loadunload} 

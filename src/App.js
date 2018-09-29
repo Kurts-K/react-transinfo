@@ -9,33 +9,108 @@ import UserInfo from './UserInfo';
 import './app.css';    
 import Register from './Register'
 import AddCargo from './AddCargo'
+import axios from 'axios'
 
 class App extends Component {
 
  
   state = {
-    AuthVisible: true,
-    SearchVisible: 'Searh',
-    AddCargoVisible: false,
-    email: '',
-    password: '',
+
+  //Видимость компонентов
+    LeftAuthVisible: Auth,
+    CenterSearchVisible: 'Searh',
+
+ //Авторизация
+    AuthEmail: '',
+    AuthPassword: '',
+    AuthAlienPc: '',
+
+
+//Регистрация
+    RegFirstName: '',
+    RegLastName: '',
+    RegEmail: '',
+    RegFone: '',
+    RegPassword1: '',
+    RegPassword2: '',
+
+
+//Данные пользователя в Userinfo
     userName: 'Курц Коснтантин',
     userСompany: 'Рога и Копыта',
     userId: '777',
+
+
+//GlobalSearh параметры
     countryLoad: '',
-    regionLoad: '',
     countryUnload: '',
-    regionUnload: ''
+
+    regionLoad: '',
+    regionUnload: '',
+
+    SearchCargoType_Tent: '',
+    SearchCargoType_Ref: '',
+    SearchCargoType_Micro: '',
+    SearchCargoType_Fur: '',
+
+    SearhCargoWeight: '',
+    SearhCargoAmount: '',
+
+    SearhCargoDateFrom: '',
+    SearhCargoDateTo: '',
+
+//Данные добавления нового груза
+    AddCargoName: '',
+    AddCargoType: '',
+
+    AddCargoDateLoad: '',
+    AddCargoDateUnload: '',
+
+    AddCargoWeight: '',
+    AddCargoAmount: '',
+
+    AddCargoСonsolidated: '',
+    AddCargoUrgently: '',
+
+    AddCargoСountryLoad: '',
+    AddCargoCountryUnload: '',
+
+    AddCargoRegionLoad: '',
+    AddCargoRegionUnload: '',
+
+    
+
+   
   }
+
+  
  
 
 
  onSubmited = () => {
-    this.setState({AuthVisible: false});
+    this.setState({LeftAuthVisible: UserInfo});
 }
 
 onRegister = () => {
-  this.setState({SearchVisible: 'Register'})
+if (this.state.CenterSearchVisible == 'Searh') {
+  this.setState({CenterSearchVisible: 'Register'})
+} else 
+  this.setState({CenterSearchVisible: 'Searh'})
+}
+
+AddCargoVisible = (event) => {
+   this.setState({CenterSearchVisible: 'AddCargo'})
+   event.preventDefault();
+}
+
+  handleChangeTextInput = (event) => {
+    var tar = event.target.name;
+    var val = event.target.value;
+    if (event.target.type == 'checkbox') {
+    this.setState({[tar]: event.target.checked});
+  } else if (event.target.type != 'checkbox')
+
+    this.setState({[tar]: val});
 }
 
 
@@ -46,13 +121,18 @@ selectCountry = (event) => {
     case 'countryUnload' : this.setState({countryUnload: event.target.value}); break;
     case 'regionLoad' : this.setState({regionLoad: event.target.value}); break;
     case 'regionUnload' : this.setState({regionUnload: event.target.value}); break;
+
+  case 'AddCargoСountryLoad' : this.setState({AddCargoСountryLoad: event.target.value}); break;
+  case 'AddCargoCountryUnload' : this.setState({AddCargoCountryUnload: event.target.value}); break;
+  case 'AddCargoRegionLoad' : this.setState({AddCargoRegionLoad: event.target.value}); break;
+  case 'AddCargoRegionUnload' : this.setState({AddCargoRegionUnload: event.target.value}); break;
+
+   
+   
   }
 }
 
-AddCargoVisible = (event) => {
-   this.setState({SearchVisible: 'AddCargo'})
-   event.preventDefault();
-}
+
 
 
 
@@ -74,52 +154,47 @@ AddCargoVisible = (event) => {
 
 
       	<div className="col-lg-3">
-        {this.state.AuthVisible ? 
+        {this.state.LeftAuthVisible == Auth && 
         <Auth 
-        SearchVisible={this.state.SearchVisible}
+        CenterSearchVisible={this.state.CenterSearchVisible}
         onSubmited={this.onSubmited} 
-        onRegister={this.onRegister} /> : 
+        onRegister={this.onRegister}
+        handleChangeTextInput = {this.handleChangeTextInput}
+         /> ||
+        this.state.LeftAuthVisible == UserInfo &&
         <UserInfo 
         userName={this.state.userName}
         userСompany={this.state.userСompany}
-        userId={this.state.userId}/>
-      }
+        userId={this.state.userId}/>}
         </div>
 
 
-      	<div className={this.state.AddCargoVisible ? "col-lg-6" : "col-lg-9" }>
+      	
 
-        {(this.state.SearchVisible == 'Searh')
 
-        &&
+        <div className={this.state.CenterSearchVisible == 'AddCargo' ? "col-lg-9" : "col-lg-6" }>
+        {this.state.CenterSearchVisible == 'Searh'   &&
 
         <GlobalSearch
         AddCargoVisible = {this.AddCargoVisible}
         selectCountry={this.selectCountry} 
         countryLoad={this.state.countryLoad} 
-        countryUnload={this.state.countryUnload} />
-      
-        ||
-        (this.state.SearchVisible == 'Register')
-        &&
-
+        countryUnload={this.state.countryUnload}
+        handleChangeTextInput={this.handleChangeTextInput} />  ||
+        this.state.CenterSearchVisible == 'Register'&&
 
         <Register
-        onRegister={this.onRegister} />
-        ||
-        (this.state.SearchVisible == 'AddCargo')
-        &&
+        handleChangeTextInput={this.handleChangeTextInput}
+        onRegister={this.onRegister} />              ||
+        this.state.CenterSearchVisible == 'AddCargo' &&
 
-        <AddCargo />
-
+        <AddCargo
+        selectCountry={this.selectCountry} 
+        AddCargoСountryLoad={this.state.AddCargoСountryLoad} 
+        AddCargoCountryUnload={this.state.AddCargoCountryUnload}
+        handleChangeTextInput={this.handleChangeTextInput}
+         /> }
         
-
-       
-
-
-          } 
-
-      
         </div>
 
 

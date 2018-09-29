@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './AddCargo-style.css' 
+import Country from '../GlobalSearch/Country.js'
+import Region from '../GlobalSearch/Region.js'
 
 
 class AddCargo extends Component { 
@@ -11,58 +13,86 @@ class AddCargo extends Component {
 	<a href="#" className="linkReg"> Добавить груз</a></p>
 				<p>Поля отмеченные (*), обязательны для заполнения.</p>
 
-					<form>
+					<form onChange={this.props.handleChangeTextInput}>
 					<div className="row">
 
 					<div className="col-lg-3">
-						<label htmlFor="cargoName">Наименование груза</label>
-						<input type="text" name="cargoName" id="cargoName" />
+						<label htmlFor="AddCargoName">Наименование груза</label>
+						<input type="text" name="AddCargoName" id="AddCargoName" />
 					</div>
 
 					<div className="col-lg-3">
-						<label htmlFor="cargoType">Тип кузова</label>
-						<input type="text" name="cargoType" id="cargoType" />
+						<label htmlFor="AddCargoType">Тип кузова</label>
+						<input type="text" name="AddCargoType" id="AddCargoType" />
 					</div>
 
 					<div className="col-lg-6">
 						<p>Дата готовности груза к загрузке:</p>
-						<label htmlFor="dateLoad">C</label>
-						<input type="date" name="dateLoad" id="dateLoad" />
+						<label htmlFor="AddCargoDateLoad">C</label>
+						<input type="date" name="AddCargoDateLoad" id="AddCargoDateLoad" />
 
-						<label htmlFor="dateUnload">По</label>
-						<input type="date" name="dateUnload" id="dateUnload" />
+						<label htmlFor="AddCargoDateUnload">По</label>
+						<input type="date" name="AddCargoDateUnload" id="AddCargoDateUnload" />
 					</div>
       				</div>
 
       				<div className="row">
-      					<div className="col-lg-3">
-						<label htmlFor="cargoWeight">Вес, т</label>
-						<input type="text" name="cargoWeight" id="cargoWeight" />
+	      				<div className="col-lg-3">
+							<label htmlFor="AddCargoWeight">Вес, т</label>
+							<input type="text" name="AddCargoWeight" id="AddCargoWeight" />
+						</div>
+
+						<div className="col-lg-3">
+							<label htmlFor="AddCargoAmount">Объем, м3</label>
+							<input type="text" name="AddCargoAmount" id="AddCargoAmount" />
+						</div>
+
+
+						<div className="col-lg-4">
+							<div className="row">
+								<div className="col-lg-3"></div>
+								<label htmlFor="AddCargoСonsolidated ">Сборный груз</label>
+								<input type="checkbox" name="AddCargoСonsolidated" id="AddCargoСonsolidated" />
+							</div>
+
+							<div className="row">
+									<div className="col-lg-3"></div>
+									<label htmlFor="AddCargoUrgently">Срочно</label>
+									<input type="checkbox" name="AddCargoUrgently" id="AddCargoUrgently" />
+							</div>
+						</div>
 					</div>
 
-					<div className="col-lg-3">
-						<label htmlFor="cargoAmount">Объем, м3</label>
-						<input type="text" name="cargoAmount" id="cargoAmount" />
-					</div>
 
 
-					<div className="col-lg-4">
-						<div className="row">
-						<div className="col-lg-3"></div>
-						<label htmlFor="cargoAmount">Сборный груз</label>
-						<input type="checkbox" name="cargoAmount" id="cargoAmount" />
-					</div>
+
 					<div className="row">
-						<div className="col-lg-3"></div>
-						<label htmlFor="cargoAmount">Срочно</label>
-						<input type="checkbox" name="cargoAmount" id="cargoAmount" />
+						<div className="col-lg-6">
+							<label>Место загрузки (страна):</label>
+							<Country  
+							loadunload={'AddCargoСountryLoad'} 
+							selectCountry={this.props.selectCountry}/>
+							<label>Место загрузки (город):</label>
+							<Region 
+							loadunload={'AddCargoRegionLoad'} 
+							AddCargoСountryLoad={this.props.AddCargoСountryLoad} 
+							selectCountry={this.props.selectCountry}  />
+
+						</div>
+						<div className="col-lg-6">
+							<label>Место разгрузки (страна):</label>
+							<Country  
+							loadunload={'AddCargoCountryUnload'} 
+							selectCountry={this.props.selectCountry}/>
+
+							<label>Место разгрузки (город):</label>
+							<Region 
+							loadunload={'AddCargoRegionUnload'} 
+							AddCargoCountryUnload={this.props.AddCargoCountryUnload} 
+							selectCountry={this.props.selectCountry}  />
+
+						</div>
 					</div>
-					</div>
-
-
-
-
-      				</div>
 
 
 

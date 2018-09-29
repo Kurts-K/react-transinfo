@@ -19,12 +19,12 @@ class GlobalSearch extends Component {
 				<QuickStart AddCargo={this.props.AddCargoVisible}
 				
 				 />
-				}
+				
 
 				<div class="form-group">
 				<h1>ПОИСК ГРУЗОВ И ТРАНСПОРТА</h1>
 				
-				<form>
+				<form onChange={this.props.handleChangeTextInput}>
 
 
 		<div className="row">
@@ -34,18 +34,28 @@ class GlobalSearch extends Component {
 				<div className="load">
 					<div className="select_loading">
 					<label  htmlFfor="select_loading">Загрузка </label>
-					<Country  loadunload={'countryLoad'} selectCountry={this.props.selectCountry}/>
+					<Country  
+					loadunload={'countryLoad'} 
+					selectCountry={this.props.selectCountry}/>
 
 					
-					<Region loadunload={'regionLoad'} countryLoad={this.props.countryLoad} selectCountry={this.props.selectCountry}  />
+					<Region 
+					loadunload={'regionLoad'} 
+					countryLoad={this.props.countryLoad} 
+					selectCountry={this.props.selectCountry}  />
 
 					</div>
 
 					<div clssName="select_unloading">
 					<label htmlFfor="select_unloading">Разгрузка</label>
-					<Country  loadunload={'countryUnload'} selectCountry={this.props.selectCountry}/>
+					<Country  
+					loadunload={'countryUnload'} 
+					selectCountry={this.props.selectCountry} />
 					
-					<Region loadunload={'regionUnload'} selectCountry={this.props.selectCountry} countryUnload={this.props.countryUnload} />
+					<Region 
+					loadunload={'regionUnload'} 
+					countryUnload={this.props.countryUnload} 
+					selectCountry={this.props.selectCountry} />
 					
 					</div>
 
@@ -59,25 +69,37 @@ class GlobalSearch extends Component {
 
 
 					<div className="type_bodywork">
-					<ul id="type_bodywork">
-					<label htmlFfor="type_bodywork">Тип кузова</label>
-						<li>
-					<input type="checkbox" name="tent" id="tent" />
-					<label htmlFfor="tent">Тент</label>
-						</li>
-						<li>
-					<input type="checkbox" name="ref" id="ref" />
-					<label htmlFfor="ref">Рефрижератор</label>
-						</li>
-						<li>
-					<input type="checkbox" name="micro" id="micro" />
-					<label htmlFfor="micro">Микроавтобус</label>
-						</li>
-						<li>
-					<input type="checkbox" name="fur" id="fur" />
-					<label htmlFfor="fur">Фургон</label>
-						</li>
-					</ul>
+						<ul id="type_bodywork">
+							<label htmlFfor="type_bodywork">Тип кузова</label>
+								<li>
+							<input 
+							type="checkbox" 
+							name="SearchCargoType_Tent" 
+							id="SearchCargoType_Tent" />
+							<label htmlFfor="SearchCargoType_Tent">Тент</label>
+								</li>
+								<li>
+							<input 
+							type="checkbox" 
+							name="SearchCargoType_Ref" 
+							id="SearchCargoType_Ref" />
+							<label htmlFfor="SearchCargoType_Ref">Рефрижератор</label>
+								</li>
+								<li>
+							<input 
+							type="checkbox" 
+							name="SearchCargoType_Micro" 
+							id="SearchCargoType_Micro" />
+							<label htmlFfor="SearchCargoType_Micro">Микроавтобус</label>
+								</li>
+								<li>
+							<input 
+							type="checkbox" 
+							name="SearchCargoType_Fur" 
+							id="SearchCargoType_Fur" />
+							<label htmlFfor="SearchCargoType_Fur">Фургон</label>
+								</li>
+						</ul>
 					</div>
 
 			</div>
@@ -91,11 +113,11 @@ class GlobalSearch extends Component {
 			<div className="col-lg-12">
 
 					<div className="weightAmount">
-					<label htmlFor="weight">Вес</label>
-					<input type="text" name="weight" className="weight" placeholder="Тонн" id="weight" />
+					<label htmlFor="SearhCargoWeight">Вес</label>
+					<input type="text" name="SearhCargoWeight" id="SearhCargoWeight" className="weight" placeholder="Тонн" id="weight" />
 
-					<label htmlFor="weight">М3</label>
-					<input type="text" name="amount" className="amount" placeholder="м3" id="amount" />
+					<label htmlFor="SearhCargoAmount">М3</label>
+					<input type="text" name="SearhCargoAmount" id="SearhCargoAmount" className="amount" placeholder="м3" id="amount" />
 					</div>
 			</div>
 
@@ -104,11 +126,13 @@ class GlobalSearch extends Component {
 					
 			<div className="col-lg-12">
 					<div className="date">
-						<label htmlFor="from">Когда: от</label>
-						<input type="date" name="from" className="from" id="from" />
+						<label htmlFor="SearhCargoDateFrom">Когда: от</label>
+						<input type="date" name="SearhCargoDateFrom" className="from" 
+						id="SearhCargoDateFrom" />
 
-						<label htmlFor="to">до</label>
-						<input type="date" name="to" className="to" id="to" />
+						<label htmlFor="SearhCargoDateTo">до</label>
+						<input type="date" name="SearhCargoDateTo" className="to" 
+						id="SearhCargoDateTo" />
 					</div>
 			</div>
 

@@ -7,6 +7,7 @@ class Country extends Component {
 		render() {
 			return(
 				<select className="form-control-sm" id={this.props.loadunload} onChange={this.props.selectCountry} >
+						<InputLoad value={''} country={'Все страны'} />
 						<InputLoad value={'by'} country={'Беларусь'} />
 						<InputLoad value={'ru'} country={'Россия'}  />
 						<InputLoad value={'ua'} country={'Украина'} />
